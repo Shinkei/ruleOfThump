@@ -1,0 +1,39 @@
+{
+  "celebrities": [
+    {
+      "id": 1,
+      "name": "Pope Francis?",
+      "description": "He's talking tough on clergy sexual abuse,but is he just another papal pervert protector? (thumbs down) or a true pedophile punishing pontiff? (thumbs up)",
+      "thumbsup": 0,
+      "thumbsdown": 0
+    },
+    {
+      "id": 2,
+      "name": "Kanye West",
+      "description": "Thanks you for voting",
+      "thumbsup": 15,
+      "thumbsdown": 11
+    },
+    {
+      "id": 3,
+      "name": "Mark Zuckerberg",
+      "description": "Thanks you for voting",
+      "thumbsup": 3,
+      "thumbsdown": 8
+    },
+    {
+      "id": 4,
+      "name": "Cristina Fernandez",
+      "description": "Thanks you for voting",
+      "thumbsup": 3,
+      "thumbsdown": 2
+    },
+    {
+      "id": 5,
+      "name": "Malala Yousafzai",
+      "description": "Thanks you for voting",
+      "thumbsup": 2,
+      "thumbsdown": 0
+    }
+  ]
+}
