@@ -17,6 +17,7 @@ class VoteSquare extends React.Component{
     this.handleDownVote = this.handleDownVote.bind(this);
     this.renderVoteButtons = this.renderVoteButtons.bind(this);
     this.handleVoteAgain = this.handleVoteAgain.bind(this);
+    this.handleMessage = this.handleMessage.bind(this);
   }
 
   componentDidMount(){
@@ -34,10 +35,7 @@ class VoteSquare extends React.Component{
   }
 
   handleUpVote(){
-    toast.info("Thank You!", {
-      position: toast.POSITION.BOTTOM_CENTER,
-      autoClose: 2000 
-    });
+    this.handleMessage();
     this.props.upVote(this.props.celebrity);
     this.calculatePercentage();
     this.setState({
@@ -46,15 +44,19 @@ class VoteSquare extends React.Component{
   }
 
   handleDownVote(){
-    toast.info("Thank You!", {
-      position: toast.POSITION.BOTTOM_CENTER,
-      autoClose: 2000 
-    });
+    this.handleMessage();
     this.props.downVote(this.props.celebrity);
     this.calculatePercentage();
     this.setState({
       voted:true
     })
+  }
+
+  handleMessage(){
+    toast.info("Thank You!", {
+      position: toast.POSITION.BOTTOM_CENTER,
+      autoClose: 2000 
+    });
   }
 
   handleVoteAgain(){
@@ -73,7 +75,7 @@ class VoteSquare extends React.Component{
       <>
         <button onClick={this.handleUpVote} className="thumb-button thumbup-button"><FontAwesomeIcon icon={faThumbsUp}/></button>
         <button onClick={this.handleDownVote} className="thumb-button thumbdown-button"><FontAwesomeIcon icon={faThumbsDown}/></button>
-        <button className="vote-now-button">Vote Now</button>
+        <button onClick={this.handleMessage} className="vote-now-button">Vote Now</button>
       </>
     );
   }
