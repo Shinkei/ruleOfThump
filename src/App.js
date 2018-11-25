@@ -1,6 +1,3 @@
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faThumbsUp, faThumbsDown, faAd, faSearch } from '@fortawesome/free-solid-svg-icons'
-import { faFacebook, faTwitter} from '@fortawesome/free-brands-svg-icons';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
@@ -13,14 +10,10 @@ import { fetchCelebritiesAction, upVoteCelebrityAction, downVoteCelebrityAction 
 import VoteSquare from './components/VoteSquare';
 import 'react-toastify/dist/ReactToastify.css';
 import crowd from './assets/crowd.jpg';
-
-
-library.add(faThumbsUp);
-library.add(faThumbsDown);
-library.add(faAd);
-library.add(faSearch);
-library.add(faFacebook);
-library.add(faTwitter);
+import cristina from './assets/cristina.png';
+import kanye from './assets/kanye.png';
+import malala from './assets/malala.png';
+import mark from './assets/mark.png';
 
 const StyledBody = styled.div`
   margin-left: 12%;
@@ -31,22 +24,40 @@ const StyledBody = styled.div`
     display:grid;
     grid-template-columns: 3fr 10fr 1fr;
     background-color: #ebebeb;
-  }
-
-  .ad-container > div > h5{
-    font-size: 21px;
-    margin-top: 14px;
-    margin-bottom: 0;
-  }
-  .ad-container > div > h2{
-    font-size: 38px;
-    margin-top: 0;
-    margin-bottom: 14px;
+    h5{
+      font-size: 21px;
+      margin-top: 14px;
+      margin-bottom: 0;
+    }
+    h2{
+      font-size: 38px;
+      margin-top: 0;
+      margin-bottom: 14px;
+    }
+    @media (max-width: 1583px) {
+      h5{
+        font-size: 17px;
+      }
+      h2{
+        font-size: 30px;
+      }
+    }
+    @media (max-width: 1070px) {
+      h5{
+        font-size: 14px;
+      }
+      h2{
+        font-size: 25px;
+      }
+    }
   }
 
   .text{
     text-align: left;
     font-size: 20px;
+    @media (max-width: 1583px) {
+      font-size:15px;
+    }
   }
   
   .x{
@@ -61,6 +72,9 @@ const StyledBody = styled.div`
     display:grid;
     grid-template-columns: 1fr 1fr;
     grid-gap:45px;
+    @media (max-width: 1725px) {
+      grid-template-columns: 1fr;
+    }
   }
 
   .new-celebrity{
@@ -72,36 +86,55 @@ const StyledBody = styled.div`
     display:grid;
     grid-template-columns: 4fr 1fr;
     margin-top:5%;
+    @media (max-width: 1420px) {
+      grid-template-columns: 3fr 2fr;
+    }
   }
 
   .new-celebrity-text{
     opacity:1;
-  }
-  .new-celebrity > h3 {
-    color: #000;
-    text-align:left;
-    padding-left:3%;
-    opacity:1;
-    font-size:30px;
+    h3 {
+      color: #000;
+      text-align:left;
+      padding-left:3%;
+      opacity:1;
+      font-size:30px;
+    }
   }
 
   .submit-name{
     background-color: rgb(255,255,255,0);
     border: none;
     padding-right: 35px;
+    div{
+      font-size:21px;
+      border:solid;
+      padding:10px;
+    }
   }
 
-  .submit-name > div{
-    font-size:21px;
-    border:solid;
-    padding:10px;
-  }
 `;
 
 class App extends Component {
 
   componentDidMount(){
     this.props.fetchCelebrities();
+  }
+
+  selectImage(name){
+    console.log(name)
+    switch(name){
+      case 'Cristina Fernandez':
+        return cristina;
+      case 'Kanye West':
+        return kanye;
+      case 'Malala Yousafzai':
+        return malala;
+      case 'Mark Zuckerberg':
+        return mark;
+      default:
+      return cristina;
+    }
   }
 
   render() {
@@ -130,7 +163,8 @@ class App extends Component {
                     key={celebrity.id}
                     celebrity={celebrity}
                     upVote={this.props.upVoteCelebrity}
-                    downVote={this.props.downVoteCelebrity}/>
+                    downVote={this.props.downVoteCelebrity}
+                    image={this.selectImage(celebrity.name)}/>
                 )
               })}
             </div>

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const NavStyled = styled.ul`
+const Nav = styled.ul`
   margin: 0;
   padding: 0;
   display: flex;
@@ -23,13 +23,8 @@ const NavStyled = styled.ul`
       font-size: 10px;
       padding: 0 10px;
     }
-  }
-  @media (max-width: 1300px) {
-    border-top: 1px solid white;
-    width: 100%;
-    justify-content: center;
-    font-size: 19px;
+
   }
 `;
 
-export default NavStyled;
+export default Nav;

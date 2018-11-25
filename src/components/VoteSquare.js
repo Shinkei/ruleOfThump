@@ -1,14 +1,8 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons'
 import React from 'react';
 import { toast } from 'react-toastify';
-import styled from 'styled-components';
-import image from '../assets/kanye.png';
-
-const StyledDiv = styled.div`
-  background-image: url(${image});
-  width: 100%;
-  height: 640px;
-`;
-
+import StyledVoteSquare from './styledComponents/StyledVoteSquare';
 
 class VoteSquare extends React.Component{
   constructor(props){
@@ -72,36 +66,44 @@ class VoteSquare extends React.Component{
   renderVoteButtons(){
     if(this.state.voted){
       return (
-        <button onClick={this.handleVoteAgain}>Vote Again</button>
+        <button className="vote-now-button vote-again-button" onClick={this.handleVoteAgain}>Vote Again</button>
       );
     }
     return (
       <>
-        <button onClick={this.handleUpVote}>Thumb up</button>
-        <button onClick={this.handleDownVote}>Thumb down</button>
-        <button>Vote Now</button>
+        <button onClick={this.handleUpVote} className="thumb-button thumbup-button"><FontAwesomeIcon icon={faThumbsUp}/></button>
+        <button onClick={this.handleDownVote} className="thumb-button thumbdown-button"><FontAwesomeIcon icon={faThumbsDown}/></button>
+        <button className="vote-now-button">Vote Now</button>
       </>
     );
   }
 
+  renderThumbIcon(){
+    if(this.state.thumbpsUpPercentage >= this.state.thumbsdownPercentage){
+      return (
+        <div className="thumb-name"><span><FontAwesomeIcon icon={faThumbsUp}/></span></div>
+      );
+    }
+    return (<div className="thumb-name thumbdown-button"><span><FontAwesomeIcon icon={faThumbsDown}/></span></div>);
+  }
+
   render(){
     return (
-      <StyledDiv>
-        <div>
-          <span>logoThumb</span>
+      <StyledVoteSquare image={this.props.image} thumbUp={+this.state.thumbpsUpPercentage ||1} thumbDown={+this.state.thumbsdownPercentage || 1}>
+        <div className="name-container">
+          {this.renderThumbIcon()}
           <h2>{this.props.celebrity.name}</h2>
         </div>
-        <h6><strong>1 month ago</strong> in Entertainment</h6>
-        <p>{this.props.celebrity.description}</p>
-        <p>{this.state.totalVotes}</p>
-        <div>
+        <h6 className="lapse"><strong>1 month ago</strong> in Entertainment</h6>
+        <p className="description">{this.props.celebrity.description}</p>
+        <div className="button-container">
           {this.renderVoteButtons()}
         </div>
-        <div>
-          <span>thumb up {this.state.thumbpsUpPercentage}%</span>
-          <span>thumb down {this.state.thumbsdownPercentage}%</span>
+        <div className="votes-percentage-container">
+          <span className="thumbup-percentage"><FontAwesomeIcon icon={faThumbsUp}/> {this.state.thumbpsUpPercentage || '0'}%</span>
+          <span className="thumbdown-percentage">{this.state.thumbsdownPercentage || '0'}% <FontAwesomeIcon icon={faThumbsDown}/></span>
         </div>
-      </StyledDiv>
+      </StyledVoteSquare>
     );
   }
 }

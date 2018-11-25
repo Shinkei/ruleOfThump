@@ -10,29 +10,29 @@
     {
       "id": 2,
       "name": "Kanye West",
-      "description": "Thanks you for voting",
-      "thumbsup": 15,
-      "thumbsdown": 11
+      "description": "Thank you for voting",
+      "thumbsup": 0,
+      "thumbsdown": 0
     },
     {
       "id": 3,
       "name": "Mark Zuckerberg",
-      "description": "Thanks you for voting",
-      "thumbsup": 3,
-      "thumbsdown": 8
+      "description": "Thank you for voting",
+      "thumbsup": 0,
+      "thumbsdown": 0
     },
     {
       "id": 4,
       "name": "Cristina Fernandez",
-      "description": "Thanks you for voting",
-      "thumbsup": 3,
-      "thumbsdown": 2
+      "description": "Thank you for voting",
+      "thumbsup": 0,
+      "thumbsdown": 0
     },
     {
       "id": 5,
       "name": "Malala Yousafzai",
-      "description": "Thanks you for voting",
-      "thumbsup": 2,
+      "description": "Thank you for voting",
+      "thumbsup": 0,
       "thumbsdown": 0
     }
   ]
