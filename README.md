@@ -1,5 +1,5 @@
 # Rule of Thumbs
-![app image][https://github.com/Shinkei/ruleOfThump/blob/master/app.jpg]
+![app image](https://raw.githubusercontent.com/Shinkei/ruleOfThump/master/app.jpg)
 > This is a web application made with React and Redux to apply votes to a celebrity.
 You can show your opinion and give a thumb up of a thumb down
 
